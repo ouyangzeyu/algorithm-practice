@@ -17,6 +17,7 @@
  * @next {function} 将当前位置前移一位
  * @currPos {function} 返回列表的当前位置
  * @moveTo {function} 将当前位置移动到指定位置
+ * @find {function} 是否能找到指定元素
  */
 
 function List() {
@@ -24,25 +25,35 @@ function List() {
     this.listSize = 0
     this.pos = 0
     this.append = append
-    this.find = find
     this.toString = toString
-    // this.clear = clear
-    // this.insert = insert
+    this.clear = clear
+    this.insert = insert
+    this.find = find
     this.remove = remove
-    // this.front = front
-    // this.end = end
-    // this.prev = prev
-    // this.next = next
+    this.front = front
+    this.end = end
+    this.prev = prev
+    this.next = next
     this.length = length
-    // this.currPos = currPos
-    // this.moveTo = moveTo
-    // this.getElement = getElement
-    // this.length = length
-    // this.contains = contains
+    this.currPos = currPos
+    this.moveTo = moveTo
+    this.getElement = getElement
+    this.contains = contains
 
     // 定义append方法
     function append(element) {
         this.dataStore[this.listSize++] = element
+    }
+
+    // find方法，找到了就返回元素在列表中的位置，否则返回-1
+    function find(element) {
+        for (let i = 0; i < this.dataStore.length; i++) {
+            if (this.dataStore[i] == element) {
+                return i
+            } else {
+                return -1
+            }
+        }
     }
 
     // 定义删除方法
@@ -72,29 +83,65 @@ function List() {
         let insertPos = this.find(after)
         if (inserPos > -1) {
             this.dataStore.splice(insertPos + 1, 0, element)
+            ++this.listSize
+            return true
+        } else {
+            return false
         }
     }
 
-    /*------------ 内部使用的工具函数 ------------- */
-    // 找到指定元素，找到了就返回元素在列表中的位置，否则返回-1
-    function find(element) {
+    // clear清空列表中的元素
+    function clear () {
+        delete this.dataStore
+        this.dataStore = []
+        this.listSize = this.pos = 0
+    }
+
+    // contains判断是否在列表中的方法
+    function contains (element) {
         for (let i = 0; i < this.dataStore.length; i++) {
             if (this.dataStore[i] == element) {
-                return i
-            } else {
-                return -1
+                return true
             }
         }
+        return false
+    }
+
+    // 如下是遍历列表相关的方法
+    function front () {
+        return this.pos = 0
+    }
+    function end () {
+        return this.pos = this.listSize - 1
+    }
+    function prev () {
+        if (this.pos > 0) {
+            --this.pos
+        }
+    }
+    function next () {
+        if (this.pos < this.listSize - 1) {
+            ++this.pos
+        }
+    }
+    function currPos () {
+        return this.pos
+    }
+    function moveTo (position) {
+        this.pos = position
+    }
+    function getElement () {
+        return this.dataStore[this.pos]
     }
 }
 
 
 /*------------ 逻辑测验 ------------- */
 const names = new List()
-names.append('ouyang')
+names.append('小黑')
 names.append('小明')
 names.append('小红')
 names.append('小花')
-names.remove('ouyang')
+names.remove('小黑')
 
-console.log(names.toString(), names.listSize); // [ '小明', '小红', '小花' ] 3
+console.log(names.toString(), names.listSize);
