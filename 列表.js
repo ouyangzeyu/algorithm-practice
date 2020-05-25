@@ -1,7 +1,8 @@
 /**
  * @feature 列表
  * 定义:列表是一组有序的数据每个列表中的数据项成为元素，在js中，列表中的元素可以是任意数据类型
- * 列表应该具有的属性:
+ * 适用范围:如果数据存储的顺序不重要，也不必对数据进行查找，那么列表就是一种再好不过的 数据结构
+ *  * 列表应该具有的属性:
  * @listSize 列表的元素个数
  * @pos 列表的当前位置
  * @length {function}  返回列表中元素的个数
@@ -144,4 +145,4 @@ names.append('小红')
 names.append('小花')
 names.remove('小黑')
 
-console.log(names.toString(), names.listSize);
+console.log(names.toString(), names.dataStore[0]);
