@@ -4,35 +4,34 @@
  * 栈具有的属性:由于栈具有后入先出的特点，所以任何不在栈顶的元素都无法访问。为了得到栈底的元素，必须先拿掉上面的元素。入栈使用 push()方法，出栈使用pop()方法,peek()方法则只返回栈顶元素，而不删除它。
  */
 
- function Stack () {
-     this.dataStore = [] // 初始化数据
-     this.top = 0 // 栈顶位置
-     this.push = push
-     this.pop = pop
-     this.peek = peek
-     this.length = length
-     this.clear = clear
+function Stack() {
+    this.dataStore = [] // 初始化数据
+    this.top = 0 // 栈顶位置
+    this.push = push
+    this.pop = pop
+    this.peek = peek
+    this.length = length
+    this.clear = clear
 
-     function push (element) {
-         this.dataStore[this.top++] = element
-     }
+    function push(element) {
+        this.dataStore[this.top++] = element
+    }
 
-     // 返回栈顶元素同时top减1
-     function pop () {
-         return this.dataStore[--this.top]
-     }
+    // 返回栈顶元素同时top减1
+    function pop() {
+        return this.dataStore[--this.top]
+    }
 
-     function peek () {
+    function peek() {
         return this.dataStore[this.top - 1]
-     }
+    }
 
-     // 返回栈内元素的个数
-     function length () {
-         return this.top
-     }
+    // 返回栈内元素的个数
+    function length() {
+        return this.top
+    }
 
-     function clear () {
-         this.top = 0
-     }
- }
- 
+    function clear() {
+        this.top = 0
+    }
+}

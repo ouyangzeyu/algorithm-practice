@@ -92,14 +92,14 @@ function List() {
     }
 
     // clear清空列表中的元素
-    function clear () {
+    function clear() {
         delete this.dataStore
         this.dataStore = []
         this.listSize = this.pos = 0
     }
 
     // contains判断是否在列表中的方法
-    function contains (element) {
+    function contains(element) {
         for (let i = 0; i < this.dataStore.length; i++) {
             if (this.dataStore[i] == element) {
                 return true
@@ -109,29 +109,29 @@ function List() {
     }
 
     // 如下是遍历列表相关的方法
-    function front () {
+    function front() {
         return this.pos = 0
     }
-    function end () {
+    function end() {
         return this.pos = this.listSize - 1
     }
-    function prev () {
+    function prev() {
         if (this.pos > 0) {
             --this.pos
         }
     }
-    function next () {
+    function next() {
         if (this.pos < this.listSize - 1) {
             ++this.pos
         }
     }
-    function currPos () {
+    function currPos() {
         return this.pos
     }
-    function moveTo (position) {
+    function moveTo(position) {
         this.pos = position
     }
-    function getElement () {
+    function getElement() {
         return this.dataStore[this.pos]
     }
 }
