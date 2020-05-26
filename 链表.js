@@ -53,7 +53,7 @@ function LinkList() {
         while ((currNode.next != null) && (currNode.next.element == element)) {
             return currNode
         }
-        return currNode
+        return currNode.next
     }
 
     // 删除节点: 需要找到被删除节点的前一个节点并改变其next指向直接指向到被删除元素后面的节点
