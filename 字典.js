@@ -10,7 +10,7 @@ function Dictionary() {
     this.remove = remove
 
     function add(key, value) {
-        this.dataStore.push({[key]: value})
+        this.dataStore[key] = value
     }
 
     function find(key) {
@@ -25,8 +25,5 @@ function Dictionary() {
 /********************代码测试****************** */
 const person = new Dictionary()
 person.add('name', '小明')
-person.add('name', '小红')
-person.add('name', '小花')
+person.add('age', 18)
 console.log(person.dataStore);
-
-
